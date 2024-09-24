@@ -14,3 +14,4 @@ plot_smiles <- function(smiles){
   sdf <- ChemmineR::smiles2sdf(smiles)
   ChemmineR::plot(sdf)
 }
+
