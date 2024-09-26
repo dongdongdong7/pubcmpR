@@ -15,3 +15,4 @@ plot_smiles <- function(smiles){
   ChemmineR::plot(sdf)
 }
 
+

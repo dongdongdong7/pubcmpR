@@ -26,3 +26,5 @@ rD[["server"]]$stop()
 sdf <- ChemmineR::smiles2sdf("CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)O)O[C@H]3[C@H](C=C4)O")
 ChemmineR::plot(sdf[1])
 
+compounds <- ChemmineR::pubchemCidToSDF(c(111,123))
+compounds
