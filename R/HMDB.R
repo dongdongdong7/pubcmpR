@@ -12,3 +12,17 @@
   prs = XML::xmlTreeParse(txt, asText = TRUE)
   XML::xmlToList(prs)
 }
+#' @title load_hmdbCmpTb
+#'
+#' @return hmdbCmpTb
+#' @export
+#'
+#' @examples
+#' hmdbCmpTb <- load_hmdbCmpTb()
+load_hmdbCmpTb <- function(){
+  hmdbCmpTb_path <- system.file("extdata", "hmdbCmpTb.rds", package = "pubcmpR")
+  message("Load hmdbCmpTb...")
+  if(file.exists(hmdbCmpTb_path)) hmdbCmpTb <- tibble::tibble(readRDS(hmdbCmpTb_path))
+  else stop("Can not find hmdbCmpTb, please redownload!")
+  return(hmdbCmpTb)
+}
