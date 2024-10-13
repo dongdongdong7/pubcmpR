@@ -279,7 +279,7 @@ protein_associations_list <- lapply(1:num, function(i) {
   return(protein_associations)
 })
 
-hmdbCmpTb <- tibble::tibble(accession = accession_vec, secondary_accession_list = secondary_accession_list, name = name_vec,
+hmdbCmpTb <- tibble::tibble(accession = accession_vec, secondary_accession = secondary_accession_list, name = name_vec,
                             synonyms = synonyms_list, chemical_formula = chemical_formula_vec,
                             average_molecular_weight = average_molecular_weight_vec, monisotopic_molecular_weight = monisotopic_molecular_weight_vec,
                             iupac_name = iupac_name_vec, traditional_iupac = traditional_iupac_vec,
