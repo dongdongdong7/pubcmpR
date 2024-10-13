@@ -1,4 +1,4 @@
-# cid2sdf_online(cids = c(333, 3040203, 40030312), existTest = FALSE)
+# .cid2sdf_online(cids = c(333, 3040203, 40030312), existTest = FALSE)
 .cid2sdf_online <- function(cids, existTest = FALSE){
   if(existTest){
     pubchemServerURL <- "https://pubchem.ncbi.nlm.nih.gov/rest/pug"
