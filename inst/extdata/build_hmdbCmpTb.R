@@ -1,3 +1,4 @@
+# HMDB Version: 5.0
 #setwd("G:/spd/Projects/2024/meaWmrn/Progress/database/HMDB/")
 doc <- xml2::read_xml("./hmdb_metabolites.xml")
 metabolites <- xml2::xml_children(doc)
