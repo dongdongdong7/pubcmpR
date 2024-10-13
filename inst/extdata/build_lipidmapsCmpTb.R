@@ -1,4 +1,5 @@
 # https://lipidmaps.org/databases/lmsd/download
+# LIPID MAPS Stricture Database (LMSD)
 # Last updated: 2024-10-13
 library(magrittr)
 sdf_file <- "D:/fudan/Projects/2024/pubcmpR/Progress/raw_database/LipidMaps/LMSD.sdf"
