@@ -7,11 +7,16 @@
 load_hmdbCmpTb()
 }
 \value{
-hmdbCmpTb
+A hmdbCmpTb tibble.
 }
 \description{
-load_hmdbCmpTb
+Load Human Metabolome Database (Version: 5.0).
+The data is stored in a tibble with 217920 small molecules information,
+which was generated from the xml file in \url{https://hmdb.ca/downloads}.
 }
 \examples{
 hmdbCmpTb <- load_hmdbCmpTb()
+}
+\author{
+Barry Song
 }

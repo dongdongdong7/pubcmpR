@@ -1,6 +1,11 @@
 #' @title load_hmdbCmpTb
+#' @description
+#' Load Human Metabolome Database (Version: 5.0).
+#' The data is stored in a tibble with 217920 small molecules information,
+#' which was generated from the xml file in \url{https://hmdb.ca/downloads}.
 #'
-#' @return hmdbCmpTb
+#' @return A hmdbCmpTb tibble.
+#' @author Barry Song
 #' @export
 #'
 #' @examples
@@ -65,11 +70,12 @@ load_hmdbCmpTb <- function(){
 
 #' @title search_hmdb_online
 #' @description
-#' Search HMDB database online.
+#' Search HMDB online.
 #'
-#' @param id A id vector.
+#' @param id An id vector.
 #'
 #' @return A hmdbCmpTb tibble.
+#' @author Barry Song
 #' @export
 #'
 #' @examples
@@ -78,8 +84,13 @@ search_hmdb_online <- function(id){
   metabolitesList <- lapply(id, function(x) {
     Sys.sleep(runif(n = 1, min = 0, max = 2))
     message(x)
-    .hmxToList(x)
+    tryCatch(.hmxToList(x),
+             error = function(e) {
+               message(paste0(x, " ", e))
+               NULL
+             })
   })
+  metabolitesList <- metabolitesList[!sapply(metabolitesList, is.null)]
   num <- length(metabolitesList)
   accession_vec <- sapply(1:num, function(i) {
     metabolite <- metabolitesList[[i]]

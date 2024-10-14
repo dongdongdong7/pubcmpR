@@ -7,14 +7,17 @@
 search_hmdb_online(id)
 }
 \arguments{
-\item{id}{A id vector.}
+\item{id}{An id vector.}
 }
 \value{
 A hmdbCmpTb tibble.
 }
 \description{
-Search HMDB database online.
+Search HMDB online.
 }
 \examples{
 hmdbCmpTb_test <- search_hmdb_online(id = c("HMDB0000001", "HMDB0000002"))
+}
+\author{
+Barry Song
 }
