@@ -2,6 +2,7 @@
 
 export("%>%")
 export(idMapping)
+export(load_chebiCmpTb)
 export(load_hmdbCmpTb)
 export(load_lipidmapsCmpTb)
 export(plot_smiles)
