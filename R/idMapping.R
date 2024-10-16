@@ -17,8 +17,10 @@
 #'
 #' @param id id vector with database name.
 #' @param to database name.
+#' @param unique If TRUE, An id corresponds to only one conversion ID.
 #'
 #' @return A id vector.
+#' @author Barry Song.
 #' @export
 #'
 #' @examples
@@ -27,7 +29,7 @@
 #' idTb <- idMapping(id = id)
 #' id <- c(idMappingTb$CAS[1:1000])
 #' idTb <- idMapping(id = id, to = "HMDB", unique = FALSE)
-idMapping <- function(id, to = "HMDB", default = "CID", unique = TRUE){
+idMapping <- function(id, to = c("HDMB", "CID", "CAS", "ChEBI", "KEGG", "Drugbank", "DTXCID")[1], unique = TRUE){
   idMappingTb_path <- system.file("extdata", "idMappingTb.rds", package = "pubcmpR")
   message("Load idMappingTb...")
   if(file.exists(idMappingTb_path) & !exists("idMappingTb")) idMappingTb <<- tibble::tibble(readRDS(idMappingTb_path)) %>% dplyr::select(CAS, DTXCID, CID, KEGG, ChEBI, HMDB, Drugbank, Name) %>% dplyr::distinct(CAS, DTXCID, CID, KEGG, ChEBI, HMDB, Drugbank, Name, .keep_all = TRUE)
@@ -38,9 +40,8 @@ idMapping <- function(id, to = "HMDB", default = "CID", unique = TRUE){
     names(id) <- NA
     names(id)[stringr::str_detect(id, "-")] <- "CAS"
     names(id)[stringr::str_detect(id, "DTXCID")] <- "DTXCID"
-    if(default == "CID") names(id)[stringr::str_detect(id, "^\\d+$")] <- "CID"
-    else if(default == "ChEBI") names(id)[stringr::str_detect(id, "^\\d+$")] <- "ChEBI"
-    else stop("default is wrong!")
+    names(id)[stringr::str_detect(id, "^\\d+$")] <- "CID"
+    names(id)[stringr::str_detect(id, "CHEBI:")] <- "ChEBI"
     names(id)[stringr::str_detect(id, "^C\\d+")] <- "KEGG"
     names(id)[stringr::str_detect(id, "HMDB")] <- "HMDB"
     names(id)[stringr::str_detect(id, "^(DB)\\d+")] <- "Drugbank"

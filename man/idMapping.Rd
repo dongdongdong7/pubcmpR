@@ -4,12 +4,18 @@
 \alias{idMapping}
 \title{idMapping}
 \usage{
-idMapping(id, to = "HMDB", default = "CID", unique = TRUE)
+idMapping(
+  id,
+  to = c("HDMB", "CID", "CAS", "ChEBI", "KEGG", "Drugbank", "DTXCID")[1],
+  unique = TRUE
+)
 }
 \arguments{
 \item{id}{id vector with database name.}
 
 \item{to}{database name.}
+
+\item{unique}{If TRUE, An id corresponds to only one conversion ID.}
 }
 \value{
 A id vector.
