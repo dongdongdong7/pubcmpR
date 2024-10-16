@@ -37,3 +37,6 @@ idTb <- idMapping(id = id)
 id <- c(idMappingTb$CAS[1:1000])
 idTb <- idMapping(id = id, to = "HMDB", unique = FALSE)
 }
+\author{
+Barry Song.
+}
